@@ -1,5 +1,5 @@
 package de.management.entity;
 
 public class Bankverbindung {
-    // Test
+    private Object test;
 }

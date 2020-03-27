@@ -1,0 +1,15 @@
+.statusBar {
+    -fx-background-color: #000000;
+}
+
+.appBar {
+    -fx-background-color: #212121;
+}
+
+.background {
+    -fx-background-color: #303030;
+}
+
+.dialogs {
+    -fx-background-color: #424242;
+}

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER" prefHeight="720.0" prefWidth="1280.0">
+         <children>
+            <VBox prefHeight="720.0" prefWidth="960.0" styleClass="dialogs" stylesheets="@../styles/styles.css">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="127.0" prefWidth="960.0">
+                     <children>
+                        <Label styleClass="loginTitle" text="LOGIN" />
+                     </children>
+                  </HBox>
+                  <Region prefHeight="107.0" prefWidth="960.0" />
+                  <VBox alignment="CENTER" prefHeight="234.0" prefWidth="960.0">
+                     <children>
+                        <JFXTextField maxWidth="-Infinity" prefWidth="256.0" promptText="Benutzerkennung" styleClass="loginTextField" unFocusColor="WHITE">
+                           <VBox.margin>
+                              <Insets bottom="15.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="Roboto Black" size="18.0" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField maxWidth="-Infinity" prefWidth="256.0" promptText="Passwort" styleClass="loginTextField" unFocusColor="WHITE">
+                           <font>
+                              <Font name="Roboto Black" size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="15.0" />
+                           </VBox.margin>
+                        </JFXTextField>
+                        <JFXButton buttonType="RAISED" prefHeight="48.0" prefWidth="256.0" style="-fx-background-color: #ffffff;" styleClass="loginButton" text="LOGIN" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="320.0" styleClass="background" stylesheets="@../styles/styles.css" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

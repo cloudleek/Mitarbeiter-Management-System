@@ -7,9 +7,34 @@
 }
 
 .background {
-    -fx-background-color: #303030;
+    -fx-background-color: #2A3039;
 }
 
 .dialogs {
-    -fx-background-color: #424242;
+    -fx-background-color: #353b48;
+}
+
+.navbar {
+    -fx-background-color: #2f3640;
+}
+
+.loginTitle {
+    -fx-font-family: Roboto;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 48px;
+    -fx-underline: true;
+}
+
+.loginTextField {
+    -fx-text-fill: #ffffff;
+    -fx-prompt-text-fill: #BDBDBD;
+}
+
+.loginButton {
+    -fx-background-color: #353b48;
+    -fx-font-family: Roboto;
+    -fx-font-weight: bold;
+    -fx-font-size: 32px;
+    -fx-text-fill: #ffffff;
 }

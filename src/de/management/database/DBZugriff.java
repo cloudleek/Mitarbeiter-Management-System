@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class DBZugriff {
     // Instanzvariablen
     static Connection verbindung = null;
-    static final String dbUrl = "";
+    static final String dbUrl = "jdbc:sqlite:db/mitarbeiter.sqlite";
 
     // Public Methoden
 
@@ -20,7 +20,7 @@ public class DBZugriff {
      */
     public static Connection getVerbindung() {
         try {
-            if(verbindung.isClosed() || verbindung.equals(null)) {
+            if(verbindung == null || verbindung.isClosed()) {
                 connectDatabase();
                 return verbindung;
             }

@@ -116,5 +116,5 @@ Unter der Begingung, dass sich der Benutzer gem. /F400/ angemeldet hat, stehen f
 - IntelliJ 2019 3.2 in der Ultimate Edition
 - SQLite 
 
-## 8.2 Hardware
+### 8.2 Hardware
 - Private Rechner mit der genannten Software

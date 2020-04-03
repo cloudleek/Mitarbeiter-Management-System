@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.management.controller.Anmeldung">
    <children>
       <HBox alignment="CENTER" prefHeight="720.0" prefWidth="1280.0" styleClass="background" stylesheets="@../styles/styles.css">
          <children>
@@ -33,7 +32,7 @@
                               <Font name="Roboto Black" size="18.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="loginPasswordFiel" maxWidth="-Infinity" prefWidth="256.0" promptText="Passwort" styleClass="loginTextField" unFocusColor="WHITE">
+                        <JFXTextField fx:id="loginPasswordField" maxWidth="-Infinity" prefWidth="256.0" promptText="Passwort" styleClass="loginTextField" unFocusColor="WHITE">
                            <font>
                               <Font name="Roboto Black" size="18.0" />
                            </font>

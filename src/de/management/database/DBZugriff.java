@@ -37,7 +37,7 @@ public class DBZugriff {
     public static boolean validateBenutzerkennung(String kennung) {
         boolean validerInput = false;
         // SQL Query
-        String query = "SELECT * FROM tbl_mitarbeiter WHERE name = ?";
+        String query = "SELECT * FROM tbl_login WHERE benutzername = ?";
         // Datenbankzugriff
         try {
             PreparedStatement preparedStatement = getVerbindung().prepareStatement(query);
@@ -64,7 +64,7 @@ public class DBZugriff {
     public static boolean validateLogin(String name, String passwort) {
         boolean validerLogin = false;
         // SQl Query
-        String query = "SELECT * FROM tbl_mitarbeiter WHERE name = ? AND passwort = ?";
+        String query = "SELECT * FROM tbl_login WHERE benutzername = ? AND passwort = ?";
         // Datenbankzugriff
         try {
             PreparedStatement preparedStatement = getVerbindung().prepareStatement(query);

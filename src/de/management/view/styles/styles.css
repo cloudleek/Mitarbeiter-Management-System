@@ -1,7 +1,4 @@
-.statusBar {
-    -fx-background-color: #000000;
-}
-
+/* Essential Layout Coloring */
 .appBar {
     -fx-background-color: #212121;
 }
@@ -18,6 +15,49 @@
     -fx-background-color: #2f3640;
 }
 
+/* Header */
+.header {
+    -fx-font-family: Roboto;
+    -fx-font-weight: bold;
+    -fx-text-fill: #343a40;
+    -fx-font-size: 48px;
+}
+
+.header.underlined {
+    -fx-underline: true;
+}
+
+.header2 {
+    -fx-font-family: Roboto;
+    -fx-font-weight: bold;
+    -fx-text-fill: #343a40;
+    -fx-font-size: 36px;
+}
+
+.header2.underlined {
+    -fx-underline: true;
+}
+
+.header3 {
+    -fx-font-family: Roboto;
+    -fx-font-weight: bold;
+    -fx-text-fill: #343a40;
+    -fx-font-size: 24px;
+}
+
+.header3.underlined {
+    -fx-underline: true;
+}
+
+/* Text Formating */
+.regText {
+    -fx-font-weight: Roboto;
+    -fx-font-weight: 500;
+    -fx-text-fill: #343a40;
+    -fx-font-size: 18px;
+}
+
+/* Login FXML */
 .loginTitle {
     -fx-font-family: Roboto;
     -fx-font-weight: bold;
@@ -37,4 +77,57 @@
     -fx-font-weight: bold;
     -fx-font-size: 32px;
     -fx-text-fill: #ffffff;
+}
+
+/* Dashboard FXML */
+.dashNavbar {
+    -fx-background-color: #353b48;
+}
+
+.dashBackground {
+    -fx-background-color: #f1f4f6;
+}
+
+.dashDialog {
+    -fx-background-color: #ffffff;
+}
+
+.dashDialog.shadowed {
+    -fx-effect: dropshadow(gaussian, lightgrey, 15, 0, 0, 0);
+}
+
+.dashRegText {
+    -fx-font-family: Roboto;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+}
+
+.dashRegText.yellow {
+    -fx-text-fill: #ffc107;
+}
+
+.dashRegText.red {
+    -fx-text-fill: #dc3545;
+}
+
+.dashRegText.blue {
+    -fx-text-fill: #007bff;
+}
+
+.dashRegText.grey {
+    -fx-text-fill: #6c757d;
+}
+
+.dashRegText.small {
+    -fx-font-size: 16px;
+}
+
+.dashButton {
+    -fx-text-fill: #000000;
+    -fx-font-size: 16px;
+}
+
+.dashSpacer {
+    -fx-background-color: #6c757d;
+    -fx-opacity: 0.5;
 }

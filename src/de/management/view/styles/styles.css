@@ -52,7 +52,7 @@
 /* Text Formating */
 .regText {
     -fx-font-weight: Roboto;
-    -fx-font-weight: 500;
+    -fx-font-weight: bold;
     -fx-text-fill: #343a40;
     -fx-font-size: 18px;
 }

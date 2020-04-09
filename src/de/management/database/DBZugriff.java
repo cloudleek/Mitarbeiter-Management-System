@@ -34,7 +34,7 @@ public class DBZugriff {
      * @param kennung Input des Benutzers.
      * @return Wahr oder falsch Wert, ob die Benutzerkennung vorhanden ist.
      */
-    public static boolean validateBenutzerkennung(String kennung) {
+    public static boolean validiereBenutzerkennung(String kennung) {
         boolean validerInput = false;
         // SQL Query
         String query = "SELECT * FROM tbl_login WHERE benutzername = ?";
@@ -61,7 +61,7 @@ public class DBZugriff {
      * Validiert den Login eines Benutzers in Abhaengigkeit von der Uebereinstimmung der Benutzerdaten mit der Datenbank.
      * @return Wahr oder falsch Wert, ob der Login valide ist.
      */
-    public static boolean validateLogin(String name, String passwort) {
+    public static boolean validiereAnmeldung(String name, String passwort) {
         boolean validerLogin = false;
         // SQl Query
         String query = "SELECT * FROM tbl_login WHERE benutzername = ? AND passwort = ?";

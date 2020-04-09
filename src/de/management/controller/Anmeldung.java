@@ -13,7 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-// Application Imports
+// Anwendung Imports
 import de.management.database.DBZugriff;
 // Utility Imports
 import java.io.IOException;
@@ -47,11 +47,11 @@ public class Anmeldung implements Initializable {
      * @param event ActionEvent, wenn der Benutzer den Button anklickt.
      */
     public void inputValidieren(ActionEvent event) throws IOException {
-        if(!DBZugriff.validateBenutzerkennung(loginNameField.getText())) {
+        if(!DBZugriff.validiereBenutzerkennung(loginNameField.getText())) {
             // TODO: 29/03/2020 Fehlermeldung: Falscher Benutzername
             System.out.println("Falscher Benutzername!");
         } else {
-            if(!DBZugriff.validateLogin(loginNameField.getText(), loginPasswordField.getText())) {
+            if(!DBZugriff.validiereAnmeldung(loginNameField.getText(), loginPasswordField.getText())) {
                 // TODO: 29/03/2020 Fehlermeldung: Falsches Passwort
                 System.out.println("Falsches Passwort!");
             } else { // Benutzer weiterleiten

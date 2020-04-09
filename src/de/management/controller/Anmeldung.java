@@ -60,6 +60,7 @@ public class Anmeldung implements Initializable {
                 Scene dashboardSzene = new Scene(dashboardViewParent);
                 // Stage Informationen der aktuellen Stage
                 Stage fenster = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                // Dashboard als neue Szene setzen
                 fenster.setScene(dashboardSzene);
                 fenster.centerOnScreen();
                 fenster.show();

@@ -40,7 +40,7 @@
                               <Insets bottom="15.0" />
                            </VBox.margin>
                         </JFXTextField>
-                        <JFXButton fx:id="loginButton" buttonType="RAISED" prefHeight="48.0" prefWidth="256.0" styleClass="loginButton" text="LOGIN" />
+                        <JFXButton fx:id="loginButton" buttonType="RAISED" onAction="#inputValidieren" prefHeight="48.0" prefWidth="256.0" styleClass="loginButton" text="LOGIN" />
                      </children>
                   </VBox>
                </children>

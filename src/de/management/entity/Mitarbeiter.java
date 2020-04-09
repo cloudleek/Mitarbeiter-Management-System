@@ -6,18 +6,18 @@ public class Mitarbeiter {
     private String vorname, nachname;
     private String geburtsDatum; // TODO: 17/03/2020 Date-Objekt einfuegen
     private String position;
-    private Addresse addresse;
+    private Adresse adresse;
     private Login login;
     private Bezahlung bezahlung;
 
     // Konstruktor
-    public Mitarbeiter(int mitarbeiter_id, String vorname, String nachname, String geburtsDatum, String position, Addresse addresse, Login login, Bezahlung bezahlung) {
+    public Mitarbeiter(int mitarbeiter_id, String vorname, String nachname, String geburtsDatum, String position, Adresse adresse, Login login, Bezahlung bezahlung) {
         this.mitarbeiter_id = mitarbeiter_id;
         this.vorname = vorname;
         this.nachname = nachname;
         this.geburtsDatum = geburtsDatum;
         this.position = position;
-        this.addresse = addresse;
+        this.adresse = adresse;
         this.login = login;
         this.bezahlung = bezahlung;
     }
@@ -63,12 +63,12 @@ public class Mitarbeiter {
         this.position = position;
     }
 
-    public Addresse getAddresse() {
-        return addresse;
+    public Adresse getAdresse() {
+        return adresse;
     }
 
-    public void setAddresse(Addresse addresse) {
-        this.addresse = addresse;
+    public void setAdresse(Adresse adresse) {
+        this.adresse = adresse;
     }
 
     public Login getLogin() {

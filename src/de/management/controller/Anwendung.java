@@ -13,7 +13,7 @@ import java.net.URL;
 public class Anwendung extends Application {
     // Instanzvariablen
     @FXML // URLs der FXML Dateien
-    private URL dateiPfad = getClass().getResource("../view/views/login.fxml");
+    private final URL dateiPfad = getClass().getResource("../view/views/login.fxml");
 
     Scene scene;
     Stage stage;

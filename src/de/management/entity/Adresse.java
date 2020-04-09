@@ -1,12 +1,12 @@
 package de.management.entity;
 
-public class Addresse {
+public class Adresse {
     // Instanzvariablen
     private int addresse_id;
     private String strasse, hausNr, ort, plz;
 
     // Konstruktor
-    public Addresse(int addresse_id, String strasse, String hausNr, String ort, String plz) {
+    public Adresse(int addresse_id, String strasse, String hausNr, String ort, String plz) {
         this.addresse_id = addresse_id;
         this.strasse = strasse;
         this.hausNr = hausNr;

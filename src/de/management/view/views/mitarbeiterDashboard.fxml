@@ -406,7 +406,7 @@
                            </VBox.margin>
                         </Label>
                         <Region prefHeight="10.0" prefWidth="200.0" />
-                        <Label fx:id="anwesenheitTitel" text="Anwesenheitsstatus">
+                        <Label fx:id="anwesenheitStatusTitel" text="Anwesenheitsstatus">
                            <styleClass>
                               <String fx:value="dashRegText" />
                               <String fx:value="small" />
@@ -414,7 +414,7 @@
                            <VBox.margin>
                               <Insets right="10.0" />
                            </VBox.margin></Label>
-                        <Label fx:id="anwesenheitLabel" text="Abwesend">
+                        <Label fx:id="anwesenheitStatusLabel" text="Abwesend">
                            <styleClass>
                               <String fx:value="dashRegText" />
                               <String fx:value="small" />

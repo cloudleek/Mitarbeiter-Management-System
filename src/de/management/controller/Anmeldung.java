@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 // Anwendung Imports
 import de.management.database.DBZugriff;
+import de.management.entity.Mitarbeiter;
 // Utility Imports
 import java.io.IOException;
 import java.net.URL;
@@ -56,7 +57,16 @@ public class Anmeldung implements Initializable {
                 System.out.println("Falsches Passwort!");
             } else { // Benutzer weiterleiten
                 // Szene des Dashboards laden
-                Parent dashboardViewParent = FXMLLoader.load(getClass().getResource("../view/views/mitarbeiterDashboard.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("../view/views/mitarbeiterDashboard.fxml"));
+                Parent dashboardViewParent = fxmlLoader.load();
+                // Kontrollerzugriff
+                MitarbeiterDashboard mitarbeiterDashboard = fxmlLoader.getController();
+                // Daten des angemeldeten Mitarbeiters vorm Szenenwechsel initialisieren
+                int login_id = DBZugriff.loadLoginId(loginNameField.getText(), loginPasswordField.getText());
+                Mitarbeiter angemeldeterMitarbeiter = DBZugriff.loadMitarbeiter(login_id);
+                mitarbeiterDashboard.initialisiereDaten(angemeldeterMitarbeiter);
+                // DashboardSzene laden
                 Scene dashboardSzene = new Scene(dashboardViewParent);
                 // Stage Informationen der aktuellen Stage
                 Stage fenster = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -202,6 +202,44 @@ public class DBZugriff {
     }
 
     /**
+     * Laedt die Logindaten eines Mitarbeiters aus der Datenbank und giebt diese als Login-Objekt zurueck.
+     * @param benutzerkennung Kennung des Benutzers
+     * @param passwort Passwort des Benutzers
+     * @return Login mit Zugangsdaten
+     * @see Login
+     */
+    public static Login loadLogin(String benutzerkennung, String passwort) {
+        // Login
+        Login login = null;
+        // DQL
+        String query = "SELECT * FROM tbl_login WHERE benutzername = ? AND passwort = ?";
+        // Datenbankzugriff
+        try {
+            // Statement
+            PreparedStatement preparedStatement = getVerbindung().prepareStatement(query);
+            // Parameter definieren
+            preparedStatement.setString(1, benutzerkennung);
+            preparedStatement.setString(2, passwort);
+            // Query ausfuehren
+            ResultSet resultSet = preparedStatement.executeQuery();
+            // Daten auswerten
+            while(resultSet.next()) {
+                String loginName = resultSet.getString("benutzername");
+                String loginPasswort = resultSet.getString("passwort");
+                login = new Login(loginName, loginPasswort);
+            }
+            // Verbindung trennen
+            preparedStatement.close();
+            verbindung.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        // Output
+        return login;
+    }
+
+
+    /**
      * Laedt eine Bezahlungsstufe aus der Datenbank und gibt diese als Bezahlungs-Objekt zurueck.
      * @param bezahlung_id Eindeutige Bezahlungs ID der Bezahlungsstufe
      * @return Bezahlung-Objekt den Bezahlungsdaten

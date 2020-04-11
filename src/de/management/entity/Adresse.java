@@ -54,4 +54,12 @@ public class Adresse {
     public void setPlz(String plz) {
         this.plz = plz;
     }
+
+    public String getStrasseFormatiert() {
+        return this.strasse + " " + this.hausNr;
+    }
+
+    public String getOrtFormatiert() {
+        return this.plz + ", " + this.ort;
+    }
 }

@@ -9,9 +9,10 @@ public class Mitarbeiter {
     private Adresse adresse;
     private Login login;
     private Bezahlung bezahlung;
+    private Bankverbindung bankverbindung;
 
     // Konstruktor
-    public Mitarbeiter(int mitarbeiter_id, String vorname, String nachname, String geburtsDatum, String position, Adresse adresse, Login login, Bezahlung bezahlung) {
+    public Mitarbeiter(int mitarbeiter_id, String vorname, String nachname, String geburtsDatum, String position, Adresse adresse, Login login, Bezahlung bezahlung, Bankverbindung bankverbindung) {
         this.mitarbeiter_id = mitarbeiter_id;
         this.vorname = vorname;
         this.nachname = nachname;
@@ -20,6 +21,7 @@ public class Mitarbeiter {
         this.adresse = adresse;
         this.login = login;
         this.bezahlung = bezahlung;
+        this.bankverbindung = bankverbindung;
     }
 
     // Getter und Setter
@@ -85,5 +87,17 @@ public class Mitarbeiter {
 
     public void setBezahlung(Bezahlung bezahlung) {
         this.bezahlung = bezahlung;
+    }
+
+    public Bankverbindung getBankverbindung() {
+        return bankverbindung;
+    }
+
+    public void setBankverbindung(Bankverbindung bankverbindung) {
+        this.bankverbindung = bankverbindung;
+    }
+
+    public String getFormatiertName() {
+        return this.nachname + ", " + this.vorname;
     }
 }

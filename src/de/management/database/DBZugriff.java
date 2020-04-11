@@ -97,6 +97,11 @@ public class DBZugriff {
     public static Mitarbeiter loadMitarbeiter(int loginId) {
         // Mitarbeiter
         Mitarbeiter mitarbeiter = null;
+        // Lokale Variablen
+        int adresse_id = 0;
+        int login_id = 0;
+        int bezahlung_id = 0;
+        int bankverbindung_id = 0;
         // SQl Query
         String query = "SELECT * FROM tbl_mitarbeiter WHERE login_id = ?";
         // Datenbankzugriff
@@ -114,14 +119,20 @@ public class DBZugriff {
                 String nachname = resultSet.getString("nachname");
                 String geburtsdatum = resultSet.getString("geburtsdatum");
                 String position = resultSet.getString("position");
-                Adresse adresse = loadAdresse(resultSet.getInt("adresse_id"));
-                Login login = loadLogin(resultSet.getInt("login_id"));
-                Bezahlung bezahlung = loadBezahlung(resultSet.getInt("bezahlung_id"));
-                mitarbeiter = new Mitarbeiter(mitarbeiter_id, vorname, nachname, geburtsdatum, position, adresse, login, bezahlung);
+                adresse_id = resultSet.getInt("adresse_id");
+                login_id = resultSet.getInt("login_id");
+                bezahlung_id = resultSet.getInt("bezahlung_id");
+                bankverbindung_id = resultSet.getInt("bankverbindung_id");
+                mitarbeiter = new Mitarbeiter(mitarbeiter_id, vorname, nachname, geburtsdatum, position, null, null, null, null);
             }
             // Verbindung trennen
             preparedStatement.close();
             verbindung.close();
+            // Daten ergaenzen
+            mitarbeiter.setAdresse(loadAdresse(adresse_id));
+            mitarbeiter.setLogin(loadLogin(login_id));
+            mitarbeiter.setBezahlung(loadBezahlung(bezahlung_id));
+            mitarbeiter.setBankverbindung(loadBankverbindung(bankverbindung_id));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -208,9 +219,9 @@ public class DBZugriff {
      * @return Login mit Zugangsdaten
      * @see Login
      */
-    public static Login loadLogin(String benutzerkennung, String passwort) {
+    public static int loadLoginId(String benutzerkennung, String passwort) {
         // Login
-        Login login = null;
+        int login_id = 0;
         // DQL
         String query = "SELECT * FROM tbl_login WHERE benutzername = ? AND passwort = ?";
         // Datenbankzugriff
@@ -224,9 +235,7 @@ public class DBZugriff {
             ResultSet resultSet = preparedStatement.executeQuery();
             // Daten auswerten
             while(resultSet.next()) {
-                String loginName = resultSet.getString("benutzername");
-                String loginPasswort = resultSet.getString("passwort");
-                login = new Login(loginName, loginPasswort);
+                login_id = resultSet.getInt("login_id");
             }
             // Verbindung trennen
             preparedStatement.close();
@@ -235,7 +244,7 @@ public class DBZugriff {
             e.printStackTrace();
         }
         // Output
-        return login;
+        return login_id;
     }
 
 

@@ -19,4 +19,12 @@ public class Bankverbindung {
     public void setBankLeitZahl(String bankLeitZahl) {
         this.bankLeitZahl = bankLeitZahl;
     }
+
+    public String getKontoNummer() {
+        return kontoNummer;
+    }
+
+    public void setKontoNummer(String kontoNummer) {
+        this.kontoNummer = kontoNummer;
+    }
 }

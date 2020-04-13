@@ -1,5 +1,8 @@
 package de.management.entity;
 
+/**
+ * Modelliert eine Adresse mit Strasse, Hausnummer und ortspezifischen Angaben.
+ */
 public class Adresse {
     // Instanzvariablen
     private int addresse_id;

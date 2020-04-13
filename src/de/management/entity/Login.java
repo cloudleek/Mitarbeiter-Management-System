@@ -1,5 +1,8 @@
 package de.management.entity;
 
+/**
+ * Modelliert ein Paket aus Anmeldedaten eines Benutzers.
+ */
 public class Login {
     // Instanzvariablen
     private String username, passwort;

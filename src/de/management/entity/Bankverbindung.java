@@ -1,5 +1,8 @@
 package de.management.entity;
 
+/**
+ * Modelliert die Bankverbindung einer Person mit Bankleitzahl und Kontonummer.
+ */
 public class Bankverbindung {
     // Instanzvariablen
     private String bankLeitZahl;

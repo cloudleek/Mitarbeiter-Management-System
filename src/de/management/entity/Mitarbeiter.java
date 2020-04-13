@@ -1,10 +1,13 @@
 package de.management.entity;
 
+/**
+ * Modelliert einen Mitarbeiter, der durch persoenliche, bankspezifische, berufliche und Adressdaten gekennzeichnet ist.
+ */
 public class Mitarbeiter {
     // Instanzvariablen
     private int mitarbeiter_id;
     private String vorname, nachname;
-    private String geburtsDatum; // TODO: 17/03/2020 Date-Objekt einfuegen
+    private String geburtsDatum;
     private String position;
     private Adresse adresse;
     private Login login;

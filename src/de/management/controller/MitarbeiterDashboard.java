@@ -48,6 +48,11 @@ public class MitarbeiterDashboard implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 
+    /**
+     * Stellt alle Daten eines Mitarbeiters in den entsprechenden Info-Boxen dar.
+     * Wird nach erfolgreicher Anwendung aufgerufen.
+     * @param mitarbeiter angemeldeter Mitarbeiter
+     */
     public void initialisiereDaten(Mitarbeiter mitarbeiter) {
         this.angemeldeterMitarbeiter = mitarbeiter;
         // Erstes Info-Panel
@@ -65,7 +70,7 @@ public class MitarbeiterDashboard implements Initializable {
         this.drawAnschrift();
         this.drawMitarbeiterKennziffer();
     }
-    // 1.
+    // Informationsbox fuer Zeit, Datum und Anwesenheit des Mitarbeiters
     public void drawSystemDatum() {
         datumLabel.setText(java.time.LocalDate.now().toString().replace("-","."));
     }
@@ -78,7 +83,8 @@ public class MitarbeiterDashboard implements Initializable {
         String aktuellerStatus = anwesenheitStatusLabel.getText();
         anwesenheitStatusLabel.setText((aktuellerStatus.equals("Anwesend") ? "Abwesend" : "Anwesend"));
     }
-    // 2.
+
+    // Informationsbox fuer Bezahlungs- und Bankdaten des Mitarbeiters
     public void drawBezahlungStufe() {
         stufeLabel.setText(angemeldeterMitarbeiter.getBezahlung().getStufe());
     }
@@ -95,7 +101,8 @@ public class MitarbeiterDashboard implements Initializable {
     public void drawKontoNummer() {
         kontoNummerLabel.setText(angemeldeterMitarbeiter.getBankverbindung().getKontoNummer());
     }
-    // 3-
+
+    // Informationsbox fuer persoenliche Daten des Mitarbeiters
     public void drawName() {
         nameLabel.setText(angemeldeterMitarbeiter.getFormatiertName());
     }

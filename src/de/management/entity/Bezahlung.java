@@ -1,5 +1,8 @@
 package de.management.entity;
 
+/**
+ * Modelliert eine Bezahlungsstufe mit Bezeichnung und Betrag.
+ */
 public class Bezahlung {
     // Instanzvariablen
     private String stufe;

@@ -12,28 +12,35 @@ import java.net.URL;
 
 public class Anwendung extends Application {
     // Instanzvariablen
-    @FXML // URLs der FXML Dateien
-    private final URL dateiPfad = getClass().getResource("../view/views/login.fxml");
+    @FXML // URL der loginFXML Datei
+    private final URL loginFXML = getClass().getResource("../view/views/login.fxml");
 
     Scene scene;
     Stage stage;
 
     // Public Methoden
+
+    /**
+     * Einstiegspunkt fuer die JavaFX Anwendung.
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(this.dateiPfad);
-
+        // FXML Datei
+        Parent root = FXMLLoader.load(this.loginFXML);
+        // Szene in HD-Aufloesung erstellen
         scene = new Scene(root, 1280, 720);
         stage = primaryStage;
+        // Fensterattribute festlegen
         primaryStage.setScene(scene);
-        primaryStage.show();
         primaryStage.setOnCloseRequest(windowEvent -> closeWindow());
         primaryStage.setTitle("Login");
         primaryStage.setResizable(false);
+        primaryStage.show();
     }
 
     // Private Methoden

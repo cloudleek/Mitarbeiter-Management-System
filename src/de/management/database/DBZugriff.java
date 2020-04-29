@@ -5,8 +5,10 @@ import java.sql.*;
 // Anwendung Imports
 import de.management.entity.*;
 
+import javax.xml.transform.Result;
+
 /**
- * Stellt eine Verbindung zur Datenbank zur Verfuegung.
+ * Stellt eine Verbindung und verschiedene Zugriffe auf die Datenbank zur Verfuegung.
  */
 public class DBZugriff {
     // Instanzvariablen
@@ -200,7 +202,7 @@ public class DBZugriff {
             while(resultSet.next()) {
                 String benutzername = resultSet.getString("benutzername");
                 String passwort = resultSet.getString("passwort");
-                login = new Login(benutzername, passwort);
+                login = new Login(benutzername, passwort, login_id);
             }
             // Verbindung trennen
             preparedStatement.close();
@@ -271,7 +273,7 @@ public class DBZugriff {
             while(resultSet.next()) {
                 String stufe = resultSet.getString("stufe");
                 double betrag = resultSet.getDouble("betrag");
-                bezahlung = new Bezahlung(stufe, betrag);
+                bezahlung = new Bezahlung(stufe, betrag, bezahlung_id);
             }
             // Verbindung trennen
             preparedStatement.close();
@@ -305,7 +307,7 @@ public class DBZugriff {
             while(resultSet.next()) {
                 String bankLeitZahl = resultSet.getString("bankLeitzahl");
                 String kontoNummer = resultSet.getString("kontoNummer");
-                bankverbindung = new Bankverbindung(bankLeitZahl, kontoNummer);
+                bankverbindung = new Bankverbindung(bankLeitZahl, kontoNummer, bankverbindung_id);
             }
             // Verbindung trennen
             preparedStatement.close();
@@ -315,6 +317,241 @@ public class DBZugriff {
         }
         // Output
         return bankverbindung;
+    }
+
+    public static void insertMitarbeiter(Mitarbeiter mitarbeiter) {
+        // DML
+        String query = "INSERT INTO tbl_mitarbeiter (mitarbeiter_id, vorname, nachname, geburtsdatum, position, adresse_id, login_id, bankverbindung_id, bezahlung_id) VALUES(NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
+        // Datenbankzugriff
+        try {
+            // Statement
+            PreparedStatement preparedStatement = getVerbindung().prepareStatement(query);
+            // Paramater
+            preparedStatement.setString(1, mitarbeiter.getVorname());
+            preparedStatement.setString(2, mitarbeiter.getNachname());
+            preparedStatement.setString(3, mitarbeiter.getGeburtsDatum());
+            preparedStatement.setString(4, mitarbeiter.getPosition());
+            preparedStatement.setInt(5, mitarbeiter.getAdresse().getAddresse_id());
+            preparedStatement.setInt(6, mitarbeiter.getLogin().getLogin_id());
+            preparedStatement.setInt(7, mitarbeiter.getBankverbindung().getBankverbindung_id());
+            preparedStatement.setInt(8, mitarbeiter.getBezahlung().getBezahlung_id());
+            // Query
+            preparedStatement.executeUpdate();
+            // Verbindung
+            preparedStatement.close();
+            verbindung.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static int insertAdresse(String strasse, String hausNummer, String ort, String postLeitzahl) {
+        // Output
+        int adresse_id = 0;
+        // DML
+        String query = "INSERT INTO tbl_adresse (adresse_id, strasse, hausNummer, ort, postLeitZahl) VALUES (null, ?, ?, ?, ?)";
+        // Datenbankzugriff
+        try {
+            // Statement
+            PreparedStatement preparedStatement = getVerbindung().prepareStatement(query);
+            // Paramater
+            preparedStatement.setString(1, strasse);
+            preparedStatement.setString(2, hausNummer);
+            preparedStatement.setString(3, ort);
+            preparedStatement.setString(4, postLeitzahl);
+            // Query
+            preparedStatement.executeUpdate();
+            ResultSet resultSet = getVerbindung().createStatement().executeQuery("SELECT last_insert_rowid()");
+            while(resultSet.next()) {
+                adresse_id = (int) resultSet.getLong(1);
+            }
+            // Verbindung
+            preparedStatement.close();
+            verbindung.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return adresse_id;
+    }
+
+    public static int insertLogin(String benutzername, String passwort) {
+        // Output
+        int login_id = 0;
+        // DML
+        String query = "INSERT INTO tbl_login (login_id, benutzername, passwort) VALUES (NULL, ?, ?)";
+        // Datenbankzugriff
+        try {
+            // Statement
+            PreparedStatement preparedStatement = getVerbindung().prepareStatement(query);
+            // Paramater
+            preparedStatement.setString(1, benutzername);
+            preparedStatement.setString(2, passwort);
+            // Query
+            preparedStatement.executeUpdate();
+            ResultSet resultSet = getVerbindung().createStatement().executeQuery("SELECT last_insert_rowid()");
+            while(resultSet.next()) {
+                login_id = (int) resultSet.getLong(1);
+            }
+            // Verbindung
+            preparedStatement.close();
+            verbindung.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return login_id;
+    }
+
+    public static int insertBezahlung(String stufe, double betrag) {
+        // Output
+        int bezahlung_id = 0;
+        // DML
+        String query = "INSERT INTO tbl_bezahlung (bezahlung_id, stufe, betrag) VALUES (NULL, ?, ?)";
+        // Datenbankzugriff
+        try {
+            // Statement
+            PreparedStatement preparedStatement = getVerbindung().prepareStatement(query);
+            // Paramater
+            preparedStatement.setString(1, stufe);
+            preparedStatement.setDouble(2, betrag);
+            // Query
+            preparedStatement.executeUpdate();
+            ResultSet resultSet = getVerbindung().createStatement().executeQuery("SELECT last_insert_rowid()");
+            while(resultSet.next()) {
+                bezahlung_id = (int) resultSet.getLong(1);
+            }
+            // Verbindung
+            preparedStatement.close();
+            verbindung.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return bezahlung_id;
+    }
+
+    public static int insertBankverbindung(String bankLeitzahl, String kontoNumer) {
+        // Output
+        int bankverbindung_id = 0;
+        // DML
+        String query = "INSERT INTO tbl_bankverbindung (bankverbindung_id, bankLeitzahl, kontoNummer) VALUES (NULL, ?, ?)";
+        // Datenbankzugriff
+        try {
+            // Statement
+            PreparedStatement preparedStatement = getVerbindung().prepareStatement(query);
+            // Paramater
+            preparedStatement.setString(1, bankLeitzahl);
+            preparedStatement.setString(2, kontoNumer);
+            // Query
+            preparedStatement.executeUpdate();
+            ResultSet resultSet = getVerbindung().createStatement().executeQuery("SELECT last_insert_rowid()");
+            while(resultSet.next()) {
+                bankverbindung_id = (int) resultSet.getLong(1);
+            }
+            // Verbindung
+            preparedStatement.close();
+            verbindung.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return bankverbindung_id;
+    }
+
+    public static void removeMitarbeiter(Mitarbeiter mitarbeiter) {
+        // DML
+        String query = "DELETE FROM tbl_mitarbeiter WHERE mitarbeiter_id = ?";
+        // Datenbankzugriff
+        try {
+            // Statement
+            PreparedStatement preparedStatement = getVerbindung().prepareStatement(query);
+            // Paramater
+            preparedStatement.setInt(1, mitarbeiter.getMitarbeiter_id());
+            // Query
+            preparedStatement.executeUpdate();
+            // Verbindung
+            preparedStatement.close();
+            verbindung.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        // Kaskadierendes Löschen
+        removeAdresse(mitarbeiter.getAdresse());
+        removeBankverbindung(mitarbeiter.getBankverbindung());
+        removeLogin(mitarbeiter.getLogin());
+    }
+
+    public static void removeAdresse(Adresse adresse) {
+        // DML
+        String query = "DELETE FROM tbl_adresse WHERE adresse_id = ?";
+        // Datenbankzugriff
+        try {
+            // Statement
+            PreparedStatement preparedStatement = getVerbindung().prepareStatement(query);
+            // Paramater
+            preparedStatement.setInt(1, adresse.getAddresse_id());
+            // Query
+            preparedStatement.executeUpdate();
+            // Verbindung
+            preparedStatement.close();
+            verbindung.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void removeLogin(Login login) {
+        // DML
+        String query = "DELETE FROM tbl_login WHERE login_id = ?";
+        // Datenbankzugriff
+        try {
+            // Statement
+            PreparedStatement preparedStatement = getVerbindung().prepareStatement(query);
+            // Paramater
+            preparedStatement.setInt(1, login.getLogin_id());
+            // Query
+            preparedStatement.executeUpdate();
+            // Verbindung
+            preparedStatement.close();
+            verbindung.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void removeBezahlung(Bezahlung bezahlung) {
+        // DML
+        String query = "DELETE FROM tbl_bezahlung WHERE bezahlung_id = ?";
+        // Datenbankzugriff
+        try {
+            // Statement
+            PreparedStatement preparedStatement = getVerbindung().prepareStatement(query);
+            // Paramater
+            preparedStatement.setInt(1, bezahlung.getBezahlung_id());
+            // Query
+            preparedStatement.executeUpdate();
+            // Verbindung
+            preparedStatement.close();
+            verbindung.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void removeBankverbindung(Bankverbindung bankverbindung) {
+        // DML
+        String query = "DELETE FROM tbl_bankverbindung WHERE bankverbindung_id = ?";
+        // Datenbankzugriff
+        try {
+            // Statement
+            PreparedStatement preparedStatement = getVerbindung().prepareStatement(query);
+            // Paramater
+            preparedStatement.setInt(1, bankverbindung.getBankverbindung_id());
+            // Query
+            preparedStatement.executeUpdate();
+            // Verbindung
+            preparedStatement.close();
+            verbindung.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     // Private Methoden

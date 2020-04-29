@@ -6,11 +6,13 @@ package de.management.entity;
 public class Login {
     // Instanzvariablen
     private String username, passwort;
+    private int login_id;
 
     // Konstruktor
-    public Login(String username, String passwort) {
+    public Login(String username, String passwort, int login_id) {
         this.username = username;
         this.passwort = passwort;
+        this.login_id = login_id;
     }
 
     // Public Methoden
@@ -33,5 +35,13 @@ public class Login {
 
     public void setPasswort(String passwort) {
         this.passwort = passwort;
+    }
+
+    public int getLogin_id() {
+        return login_id;
+    }
+
+    public void setLogin_id(int login_id) {
+        this.login_id = login_id;
     }
 }

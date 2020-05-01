@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+
+<JFXTabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="512.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <tabs>
+      <Tab text="Erstellen">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="466.0" prefWidth="512.0" styleClass="dashBackground" stylesheets="@../styles/styles.css">
+                     <children>
+                        <HBox fx:id="header" alignment="CENTER_LEFT" prefHeight="64.0" prefWidth="482.0" styleClass="dashDialog">
+                           <VBox.margin>
+                              <Insets bottom="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <VBox fx:id="titleContainer" alignment="CENTER_LEFT" prefHeight="64.0" prefWidth="494.0">
+                                 <children>
+                                    <Label fx:id="dialogTitleLabel" opacity="0.87" styleClass="dashRegText" text="Benutzerverwaltung" />
+                                    <Label fx:id="dialogFunctionLabel" opacity="0.6" text="Konto anlegen">
+                                       <styleClass>
+                                          <String fx:value="dashRegText" />
+                                          <String fx:value="small" />
+                                       </styleClass>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox fx:id="main" prefHeight="100.0" prefWidth="200.0" styleClass="dashDialog" VBox.vgrow="ALWAYS">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <children>
+                              <VBox fx:id="mainContainer" prefHeight="816.0" prefWidth="771.0">
+                                 <children>
+                                    <HBox fx:id="personalInfoContainer" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <VBox fx:id="leftPersonalInfoContainer" prefHeight="200.0" prefWidth="231.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <JFXTextField fx:id="nachnameInputField" promptText="Nachname" styleClass="dashInputField">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" right="10.0" />
+                                                   </VBox.margin>
+                                                </JFXTextField>
+                                                <JFXDatePicker fx:id="geburtsdatumInputField" prefHeight="28.0" prefWidth="251.0" promptText="Geburtsdatum">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" />
+                                                   </VBox.margin>
+                                                </JFXDatePicker>
+                                                <JFXTextField fx:id="strasseInputField" promptText="Straße" styleClass="dashInputField">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" right="10.0" />
+                                                   </VBox.margin>
+                                                </JFXTextField>
+                                                <JFXTextField fx:id="plzInputField" promptText="PLZ" styleClass="dashInputField">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" right="10.0" />
+                                                   </VBox.margin>
+                                                </JFXTextField>
+                                             </children>
+                                          </VBox>
+                                          <VBox fx:id="rightPersonalInfoContainer" prefHeight="200.0" prefWidth="231.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <JFXTextField fx:id="vornameInputField" promptText="Vorname" styleClass="dashInputField">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" left="10.0" />
+                                                   </VBox.margin>
+                                                </JFXTextField>
+                                                <Region prefHeight="28.0" prefWidth="231.0">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" />
+                                                   </VBox.margin>
+                                                </Region>
+                                                <JFXTextField fx:id="hausnummerInputField" promptText="Hausnummer" styleClass="dashInputField">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" left="10.0" />
+                                                   </VBox.margin>
+                                                </JFXTextField>
+                                                <JFXTextField fx:id="ortInputField" promptText="Ort" styleClass="dashInputField">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" left="10.0" />
+                                                   </VBox.margin>
+                                                </JFXTextField>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <HBox fx:id="loginContainer" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <VBox fx:id="leftLoginInfoContainer" prefHeight="200.0" prefWidth="231.0" styleClass="dashInputField">
+                                             <children>
+                                                <JFXTextField promptText="Benutzername">
+                                                   <VBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </VBox.margin>
+                                                </JFXTextField>
+                                             </children>
+                                          </VBox>
+                                          <VBox fx:id="rightLoginInfoContainer" prefHeight="200.0" prefWidth="231.0">
+                                             <children>
+                                                <JFXTextField prefHeight="28.0" prefWidth="212.0" promptText="Temporäres Passwort" styleClass="dashInputField">
+                                                   <VBox.margin>
+                                                      <Insets left="10.0" />
+                                                   </VBox.margin>
+                                                </JFXTextField>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <HBox fx:id="bankverbindungContainer" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <VBox fx:id="bankverbindungLeftContainer" prefHeight="200.0" prefWidth="231.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <JFXTextField promptText="Bankleitzahl" styleClass="dashInputField">
+                                                   <VBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </VBox.margin>
+                                                </JFXTextField>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </VBox>
+                                          <VBox fx:id="bankverbindungRightContainer" prefHeight="200.0" prefWidth="231.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <JFXTextField prefHeight="28.0" prefWidth="248.0" promptText="Kontonummer" styleClass="dashInputField">
+                                                   <VBox.margin>
+                                                      <Insets left="10.0" />
+                                                   </VBox.margin>
+                                                </JFXTextField>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <HBox fx:id="bezahlungContainer" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <VBox prefHeight="200.0" prefWidth="231.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <JFXComboBox prefHeight="25.0" prefWidth="299.0" promptText="Bezahlungsstufe" styleClass="dashInputField">
+                                                   <VBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </VBox.margin>
+                                                </JFXComboBox>
+                                             </children>
+                                          </VBox>
+                                          <VBox prefHeight="200.0" prefWidth="231.0" HBox.hgrow="ALWAYS" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="footer" prefHeight="64.0" prefWidth="482.0" styleClass="dashDialog">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <JFXButton prefHeight="74.0" prefWidth="241.0" styleClass="dashButton" text="Bestätigen" HBox.hgrow="ALWAYS" />
+                              <JFXButton prefHeight="104.0" prefWidth="241.0" styleClass="dashButton" text="Abbrechen" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab text="Entfernen">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="466.0" prefWidth="512.0" styleClass="dashBackground" stylesheets="@../styles/styles.css">
+                     <children>
+                        <HBox fx:id="header1" alignment="CENTER_LEFT" prefHeight="64.0" prefWidth="482.0" styleClass="dashDialog">
+                           <VBox.margin>
+                              <Insets bottom="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <VBox fx:id="titleContainer1" alignment="CENTER_LEFT" prefHeight="64.0" prefWidth="494.0">
+                                 <children>
+                                    <Label fx:id="dialogTitleLabel1" opacity="0.87" styleClass="dashRegText" text="Benutzerverwaltung" />
+                                    <Label fx:id="dialogFunctionLabel1" opacity="0.6" text="Konto entfernen">
+                                       <styleClass>
+                                          <String fx:value="dashRegText" />
+                                          <String fx:value="small" />
+                                       </styleClass>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox fx:id="main1" prefHeight="100.0" prefWidth="200.0" styleClass="dashDialog" VBox.vgrow="ALWAYS">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <children>
+                              <VBox fx:id="mainContainer1" prefHeight="816.0" prefWidth="771.0">
+                                 <children>
+                                    <HBox fx:id="personalInfoContainer1" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <VBox fx:id="leftPersonalInfoContainer1" prefHeight="200.0" prefWidth="231.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <JFXComboBox fx:id="benutzerEntfernenSelector" prefHeight="25.0" prefWidth="249.0" styleClass="dashInputField" />
+                                             </children>
+                                          </VBox>
+                                          <VBox fx:id="rightPersonalInfoContainer1" prefHeight="200.0" prefWidth="231.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Region prefHeight="28.0" prefWidth="231.0">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" />
+                                                   </VBox.margin>
+                                                </Region>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="footer1" prefHeight="64.0" prefWidth="482.0" styleClass="dashDialog">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <JFXButton fx:id="benutzerEntfernenConfirmButton" prefHeight="74.0" prefWidth="241.0" styleClass="dashButton" text="Bestätigen" HBox.hgrow="ALWAYS" />
+                              <JFXButton fx:id="benutzerEntfernenCancelButton" prefHeight="104.0" prefWidth="241.0" styleClass="dashButton" text="Abbrechen" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab text="Verändern">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="479.0" prefWidth="512.0">
+               <children>
+                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="466.0" prefWidth="512.0" styleClass="dashBackground" stylesheets="@../styles/styles.css">
+                     <children>
+                        <HBox fx:id="header2" alignment="CENTER_LEFT" prefHeight="64.0" prefWidth="482.0" styleClass="dashDialog">
+                           <VBox.margin>
+                              <Insets bottom="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <VBox fx:id="titleContainer2" alignment="CENTER_LEFT" prefHeight="64.0" prefWidth="494.0">
+                                 <children>
+                                    <Label fx:id="dialogTitleLabel2" opacity="0.87" styleClass="dashRegText" text="Benutzerverwaltung" />
+                                    <Label fx:id="dialogFunctionLabel2" opacity="0.6" text="Konto verändern">
+                                       <styleClass>
+                                          <String fx:value="dashRegText" />
+                                          <String fx:value="small" />
+                                       </styleClass>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox fx:id="main2" prefHeight="100.0" prefWidth="200.0" styleClass="dashDialog" VBox.vgrow="ALWAYS">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <children>
+                              <VBox fx:id="mainContainer2" prefHeight="816.0" prefWidth="771.0">
+                                 <children>
+                                    <HBox fx:id="personalInfoContainer2" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <VBox fx:id="leftPersonalInfoContainer2" prefHeight="200.0" prefWidth="231.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <JFXTextField fx:id="nachnameInputField2" promptText="Nachname" styleClass="dashInputField">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" right="10.0" />
+                                                   </VBox.margin>
+                                                </JFXTextField>
+                                                <JFXDatePicker fx:id="geburtsdatumInputField2" prefHeight="28.0" prefWidth="251.0" promptText="Geburtsdatum">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" />
+                                                   </VBox.margin>
+                                                </JFXDatePicker>
+                                                <JFXTextField fx:id="strasseInputField2" promptText="Straße" styleClass="dashInputField">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" right="10.0" />
+                                                   </VBox.margin>
+                                                </JFXTextField>
+                                                <JFXTextField fx:id="plzInputField2" promptText="PLZ" styleClass="dashInputField">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" right="10.0" />
+                                                   </VBox.margin>
+                                                </JFXTextField>
+                                             </children>
+                                          </VBox>
+                                          <VBox fx:id="rightPersonalInfoContainer2" prefHeight="200.0" prefWidth="231.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <JFXTextField fx:id="vornameInputField2" promptText="Vorname" styleClass="dashInputField">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" left="10.0" />
+                                                   </VBox.margin>
+                                                </JFXTextField>
+                                                <Region prefHeight="28.0" prefWidth="231.0">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" />
+                                                   </VBox.margin>
+                                                </Region>
+                                                <JFXTextField fx:id="hausnummerInputField2" promptText="Hausnummer" styleClass="dashInputField">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" left="10.0" />
+                                                   </VBox.margin>
+                                                </JFXTextField>
+                                                <JFXTextField fx:id="ortInputField2" promptText="Ort" styleClass="dashInputField">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" left="10.0" />
+                                                   </VBox.margin>
+                                                </JFXTextField>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <HBox fx:id="bankverbindungContainer2" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <VBox fx:id="bankverbindungLeftContainer2" prefHeight="200.0" prefWidth="231.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <JFXTextField promptText="Bankleitzahl" styleClass="dashInputField">
+                                                   <VBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </VBox.margin>
+                                                </JFXTextField>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </VBox>
+                                          <VBox fx:id="bankverbindungRightContainer2" prefHeight="200.0" prefWidth="231.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <JFXTextField prefHeight="28.0" prefWidth="248.0" promptText="Kontonummer" styleClass="dashInputField">
+                                                   <VBox.margin>
+                                                      <Insets left="10.0" />
+                                                   </VBox.margin>
+                                                </JFXTextField>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <HBox fx:id="bezahlungContainer2" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <VBox prefHeight="200.0" prefWidth="231.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <JFXComboBox prefHeight="25.0" prefWidth="299.0" promptText="Bezahlungsstufe" styleClass="dashInputField">
+                                                   <VBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </VBox.margin>
+                                                </JFXComboBox>
+                                             </children>
+                                          </VBox>
+                                          <VBox prefHeight="200.0" prefWidth="231.0" HBox.hgrow="ALWAYS" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox fx:id="footer2" prefHeight="64.0" prefWidth="482.0" styleClass="dashDialog">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <children>
+                              <JFXButton prefHeight="74.0" prefWidth="241.0" styleClass="dashButton" text="Bestätigen" HBox.hgrow="ALWAYS" />
+                              <JFXButton prefHeight="104.0" prefWidth="241.0" styleClass="dashButton" text="Abbrechen" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+   </tabs>
+</JFXTabPane>

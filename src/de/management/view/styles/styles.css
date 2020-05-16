@@ -51,8 +51,6 @@
 
 /* Text Formating */
 .regText {
-    -fx-font-weight: Roboto;
-    -fx-font-weight: bold;
     -fx-text-fill: #343a40;
     -fx-font-size: 18px;
 }
@@ -96,6 +94,14 @@
     -fx-effect: dropshadow(gaussian, lightgrey, 15, 0, 0, 0);
 }
 
+.dashInputField {
+    -fx-font-family: Roboto;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-text-fill: dimgray;
+    -fx-prompt-text-fill: black;
+}
+
 .dashRegText {
     -fx-font-family: Roboto;
     -fx-font-weight: bold;
@@ -120,6 +126,10 @@
 
 .dashRegText.small {
     -fx-font-size: 16px;
+}
+
+.dashRegText.smaller {
+    -fx-font-size: 14px;
 }
 
 .dashButton {

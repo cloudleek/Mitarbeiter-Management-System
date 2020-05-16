@@ -2,10 +2,9 @@ package de.management.database;
 
 // SQL Imports
 import java.sql.*;
+import java.util.ArrayList;
 // Anwendung Imports
 import de.management.entity.*;
-
-import javax.xml.transform.Result;
 
 /**
  * Stellt eine Verbindung und verschiedene Zugriffe auf die Datenbank zur Verfuegung.
@@ -88,6 +87,131 @@ public class DBZugriff {
         }
         // Output
         return validerLogin;
+    }
+
+    public static ArrayList<Mitarbeiter> loadMitarbeiterOfAbteilung(int abteilung_id) {
+        // Lokale Variablen
+        ArrayList<Mitarbeiter> mitarbeiterOfAbteilung = new ArrayList<Mitarbeiter>();
+        // SQL Query
+        String query = "SELECT * FROM tbl_mitarbeiter WHERE abteilung_id = ?";
+        // Datenbankzugruff
+        try {
+            // Statement
+            PreparedStatement preparedStatement = getVerbindung().prepareStatement(query);
+            // Parameter setzen
+            preparedStatement.setInt(1, abteilung_id);
+            // Query ausfuehren
+            ResultSet resultSet = preparedStatement.executeQuery();
+            // Daten auswerten
+            while(resultSet.next()) {
+                
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        // Output
+        return mitarbeiterOfAbteilung;
+    }
+
+    public static Abteilung loadAbteilung(int abteilung_id) {
+        // Abteilung
+        Abteilung abteilung = null;
+        // Lokale Varialbne
+        String kennung = null;
+        String funktion = null;
+        int manager_id = 0;
+        // SQL Query
+        String query = "SELECT * FROM tbl_abteilung WHERE abteilung_id = ?";
+        // Datenbankzugriff
+        try {
+            // Statement
+            PreparedStatement preparedStatement = getVerbindung().prepareStatement(query);
+            // Paramater definieren
+            preparedStatement.setInt(1, abteilung_id);
+            // Query ausfuehren
+            ResultSet resultSet = preparedStatement.executeQuery();
+            // Daten auswerten
+            while(resultSet.next()) {
+                kennung = resultSet.getString("kennung");
+                funktion = resultSet.getString("funktion");
+                manager_id = resultSet.getInt("manager_id");
+            }
+            Mitarbeiter manager = loadMitarbeiterById(manager_id);
+            abteilung = new Abteilung(kennung, funktion, manager, abteilung_id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        // Output
+        return abteilung;
+    }
+
+    public static int loadAbteilungId(int mitarbeiter_id) {
+        // Lokale Variable
+        int abteilung_id = 0;
+        // SQL Query
+        String query = "SELECT * FROM tbl_abteilung WHERE manager_id = ?";
+        // Datenbankzugriff
+        try {
+            // Statement
+            PreparedStatement preparedStatement = getVerbindung().prepareStatement(query);
+            // Paramter definieren
+            preparedStatement.setInt(1, mitarbeiter_id);
+            // Query ausfuehren
+            ResultSet resultSet = preparedStatement.executeQuery();
+            // Daten auswerten
+            while(resultSet.next()) {
+                abteilung_id = resultSet.getInt("abteilung_id");
+            }
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        // output
+        return abteilung_id;
+    }
+
+    public static Mitarbeiter loadMitarbeiterById(int mitarbeiter_id) {
+        // Mitarbeiter
+        Mitarbeiter mitarbeiter = null;
+        // Lokale Variablen
+        int adresse_id = 0;
+        int login_id = 0;
+        int bezahlung_id = 0;
+        int bankverbindung_id = 0;
+        // SQl Query
+        String query = "SELECT * FROM tbl_mitarbeiter WHERE mitarbeiter_id = ?";
+        // Datenbankzugriff
+        try {
+            // Statement
+            PreparedStatement preparedStatement = getVerbindung().prepareStatement(query);
+            // Parameter definieren
+            preparedStatement.setInt(1, mitarbeiter_id);
+            // Query ausfuehren
+            ResultSet resultSet = preparedStatement.executeQuery();
+            // Daten auswerten
+            while(resultSet.next()) {
+                String vorname = resultSet.getString("vorname");
+                String nachname = resultSet.getString("nachname");
+                String geburtsdatum = resultSet.getString("geburtsdatum");
+                String position = resultSet.getString("position");
+                adresse_id = resultSet.getInt("adresse_id");
+                login_id = resultSet.getInt("login_id");
+                bezahlung_id = resultSet.getInt("bezahlung_id");
+                bankverbindung_id = resultSet.getInt("bankverbindung_id");
+                mitarbeiter = new Mitarbeiter(mitarbeiter_id, vorname, nachname, geburtsdatum, position, null, null, null, null);
+            }
+            // Verbindung trennen
+            preparedStatement.close();
+            verbindung.close();
+            // Daten ergaenzen
+            mitarbeiter.setAdresse(loadAdresse(adresse_id));
+            mitarbeiter.setLogin(loadLogin(login_id));
+            mitarbeiter.setBezahlung(loadBezahlung(bezahlung_id));
+            mitarbeiter.setBankverbindung(loadBankverbindung(bankverbindung_id));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        // Output
+        return mitarbeiter;
     }
 
     /**

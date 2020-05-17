@@ -49,28 +49,52 @@ public class Anmeldung implements Initializable {
      */
     public void inputValidieren(ActionEvent event) throws IOException {
         if(!DBZugriff.validiereBenutzerkennung(loginNameField.getText())) {
-            // TODO: 29/03/2020 Fehlermeldung: Falscher Benutzername
+            // TODO: Fehlerdialog einfuegen
             System.out.println("Falscher Benutzername!");
         } else {
             if(!DBZugriff.validiereAnmeldung(loginNameField.getText(), loginPasswordField.getText())) {
-                // TODO: 29/03/2020 Fehlermeldung: Falsches Passwort
+                // TODO: Fehlerdialog einfuegen
                 System.out.println("Falsches Passwort!");
-            } else { // Benutzer weiterleiten
+            } else {
                 // Szene des Dashboards laden
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("../view/views/mitarbeiterDashboard.fxml"));
+
+                // Mitarbeiter und speziell dessen Position laden
+                int loggedInMitarbeiter_id = DBZugriff.loadLoginId(loginNameField.getText(), loginPasswordField.getText());
+                Mitarbeiter loggedInMitarbeiter = DBZugriff.loadMitarbeiter(loggedInMitarbeiter_id);
+                String position = loggedInMitarbeiter.getPosition();
+
+                // Respektive FXML Datei des Dashboards laden
+                if(position.equals("Mitarbeiter")) {
+                    fxmlLoader.setLocation(getClass().getResource("../view/views/mitarbeiterDashboard.fxml"));
+                } else if (position.equals("Manager")) {
+                    fxmlLoader.setLocation(getClass().getResource("../view/views/managerDashboard.fxml"));
+                } else {
+                    fxmlLoader.setLocation(getClass().getResource("../view/views/adminDashboard.fxml"));
+                }
+
+                // Parent der Szene laden
                 Parent dashboardViewParent = fxmlLoader.load();
-                // Kontrollerzugriff
-                MitarbeiterDashboard mitarbeiterDashboard = fxmlLoader.getController();
-                // Daten des angemeldeten Mitarbeiters vorm Szenenwechsel initialisieren
-                int login_id = DBZugriff.loadLoginId(loginNameField.getText(), loginPasswordField.getText());
-                Mitarbeiter angemeldeterMitarbeiter = DBZugriff.loadMitarbeiter(login_id);
-                mitarbeiterDashboard.initialisiereDaten(angemeldeterMitarbeiter);
-                // DashboardSzene laden
+
+                // Respektive Steuerungskomponente (Dashboard Steuerung)laden
+                if(position.equals("Mitarbeiter")) {
+                    MitarbeiterDashboard mitarbeiterDashboard = fxmlLoader.getController();
+                    mitarbeiterDashboard.initialisiereDaten(loggedInMitarbeiter);
+                } else if (position.equals("Manager")) {
+                    ManagerDashboard managerDashboard = fxmlLoader.getController();
+                    managerDashboard.initialisiereDaten(loggedInMitarbeiter);
+                } else {
+                    AdminDashboard adminDashboard = fxmlLoader.getController();
+                    adminDashboard.initialisiereDaten(loggedInMitarbeiter);
+                }
+
+                // Aus dem Dahboard eine Szene erstellen
                 Scene dashboardSzene = new Scene(dashboardViewParent);
-                // Stage Informationen der aktuellen Stage
+
+                // Die aktuell angezeigte Stage laden
                 Stage fenster = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                // Dashboard als neue Szene setzen
+
+                // Szenenwechsel: Dashboard als neue Szene festlegen
                 fenster.setScene(dashboardSzene);
                 fenster.centerOnScreen();
                 fenster.show();

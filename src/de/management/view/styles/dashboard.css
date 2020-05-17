@@ -1,0 +1,92 @@
+.background {
+    -fx-background-color: #f1f4f6;
+}
+
+.dialog {
+    -fx-background-color: #ffffff;
+}
+
+.dialog.shadow {
+    -fx-effect: dropshadow(gaussian, lightgrey, 15, 0, 0, 0);
+}
+
+/* Miscellaneous */
+.spacer {
+    -fx-background-color: #6c757d;
+    -fx-opacity: 0.5;
+}
+
+/* Dialog Coloring */
+.darkBlue {
+    -fx-text-fill: #3f51b5;;
+}
+
+.lightBlue {
+    -fx-text-fill: #2196f3;
+}
+
+.red {
+    -fx-text-fill: #e91e63;
+}
+
+.yellow {
+    -fx-text-fill: #ffc107;
+}
+
+.green {
+    -fx-text-fill: #4caf50;
+}
+
+/* Text */
+.regularText {
+    fx-font-family: Roboto;
+    -fx-text-fill: black;
+}
+
+.regularText.normal {
+    -fx-font-weight: normal;
+}
+
+.regularText.bold {
+    -fx-font-weight: bold;
+}
+
+.regularText.bolder {
+    -fx-font-weight: bolder;
+}
+
+.regularText.small {
+    -fx-font-size: 14px;
+}
+
+.regularText.medium {
+    -fx-font-size: 18px;
+}
+
+.regularText.large {
+    -fx-font-size: 22px;
+}
+
+.regularText.white {
+    -fx-text-fill: white;
+}
+
+.regularText.darkBlue {
+    -fx-text-fill: #3f51b5;;
+}
+
+.regularText.lightBlue {
+    -fx-text-fill: #2196f3;
+}
+
+.regularText.red {
+    -fx-text-fill: #e91e63;
+}
+
+.regularText.yellow {
+    -fx-text-fill: #ffc107;
+}
+
+.regularText.green {
+    -fx-text-fill: #4caf50;
+}

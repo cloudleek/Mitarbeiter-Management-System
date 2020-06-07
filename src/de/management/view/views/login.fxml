@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,21 +11,38 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.management.controller.Anmeldung">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.management.controller.Authentifizierung">
    <children>
-      <HBox alignment="CENTER" prefHeight="720.0" prefWidth="1280.0" styleClass="background" stylesheets="@../styles/styles.css">
+      <HBox fx:id="parentContainer" alignment="CENTER" prefWidth="360.0" styleClass="background" stylesheets="@../styles/dashboard.css">
          <children>
-            <VBox prefHeight="720.0" prefWidth="960.0" styleClass="dialogs" stylesheets="@../styles/styles.css">
+            <VBox fx:id="childContainer" prefHeight="720.0" prefWidth="960.0" stylesheets="@../styles/dashboard.css" HBox.hgrow="ALWAYS">
                <children>
-                  <HBox alignment="CENTER" prefHeight="127.0" prefWidth="960.0">
+                  <HBox fx:id="navBar" alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="960.0" style="-fx-background-color: #3F51B5;">
+                     <styleClass>
+                        <String fx:value="dialog" />
+                        <String fx:value="shadow" />
+                     </styleClass>
                      <children>
-                        <Label styleClass="loginTitle" text="LOGIN" />
+                        <Label text="Anmeldung">
+                           <styleClass>
+                              <String fx:value="regularText" />
+                              <String fx:value="bolder" />
+                              <String fx:value="large" />
+                              <String fx:value="white" />
+                           </styleClass>
+                        </Label>
                      </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
                   </HBox>
-                  <Region prefHeight="107.0" prefWidth="960.0" />
-                  <VBox alignment="CENTER" prefHeight="234.0" prefWidth="960.0">
+                  <Region fx:id="spacer" prefHeight="10.0" prefWidth="960.0" />
+                  <VBox alignment="CENTER" prefHeight="234.0" prefWidth="960.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <JFXTextField fx:id="loginNameField" maxWidth="-Infinity" prefWidth="256.0" promptText="Benutzerkennung" styleClass="loginTextField" unFocusColor="WHITE">
+                        <JFXTextField fx:id="loginNameField" maxWidth="-Infinity" prefWidth="256.0" promptText="Benutzerkennung" styleClass="loginTextField" unFocusColor="#e0e0e0">
                            <VBox.margin>
                               <Insets bottom="15.0" />
                            </VBox.margin>
@@ -32,7 +50,7 @@
                               <Font name="Roboto Black" size="18.0" />
                            </font>
                         </JFXTextField>
-                        <JFXTextField fx:id="loginPasswordField" maxWidth="-Infinity" prefWidth="256.0" promptText="Passwort" styleClass="loginTextField" unFocusColor="WHITE">
+                        <JFXTextField fx:id="loginPasswordField" maxWidth="-Infinity" prefWidth="256.0" promptText="Passwort" styleClass="loginTextField" unFocusColor="#e0e0e0">
                            <font>
                               <Font name="Roboto Black" size="18.0" />
                            </font>
@@ -40,15 +58,19 @@
                               <Insets bottom="15.0" />
                            </VBox.margin>
                         </JFXTextField>
-                        <JFXButton fx:id="loginButton" buttonType="RAISED" onAction="#inputValidieren" prefHeight="48.0" prefWidth="256.0" styleClass="loginButton" text="LOGIN" />
+                        <JFXButton fx:id="loginButton" onAction="#handleLoginEvent" prefHeight="48.0" prefWidth="256.0" stylesheets="@../styles/dashboard.css" text="LOGIN">
+                           <styleClass>
+                              <String fx:value="regularText" />
+                              <String fx:value="bold" />
+                              <String fx:value="medium" />
+                           </styleClass></JFXButton>
                      </children>
+                     <styleClass>
+                        <String fx:value="dialog" />
+                        <String fx:value="shadow" />
+                     </styleClass>
                   </VBox>
                </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="320.0" styleClass="navbar" stylesheets="@../styles/styles.css">
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
             </VBox>
          </children>
          <padding>

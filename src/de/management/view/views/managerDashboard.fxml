@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
@@ -45,7 +46,7 @@
                         </Region>
                         <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <Label fx:id="mitarbeiterName" text="Peter Maffay">
+                              <Label fx:id="mitarbeiterName" text="Peter Zwegat">
                                  <styleClass>
                                     <String fx:value="regularText" />
                                     <String fx:value="small" />
@@ -121,7 +122,7 @@
                                        <children>
                                           <VBox prefHeight="70.0" prefWidth="443.0">
                                              <children>
-                                                <Label fx:id="firstInfoContentTitle" text="1234">
+                                                <Label fx:id="firstInfoContentTitle" text="Manager">
                                                    <styleClass>
                                                       <String fx:value="regularText" />
                                                       <String fx:value="medium" />
@@ -129,7 +130,7 @@
                                                       <String fx:value="darkBlue" />
                                                    </styleClass>
                                                 </Label>
-                                                <Label fx:id="firstInfoContentInfo" text="Platzhalter">
+                                                <Label fx:id="firstInfoContentInfo" text="FI-DE-BE">
                                                    <styleClass>
                                                       <String fx:value="regularText" />
                                                       <String fx:value="small" />
@@ -150,7 +151,7 @@
                                           <Insets left="15.0" right="15.0" />
                                        </padding>
                                        <children>
-                                          <Label text="Platzhalter">
+                                          <Label fx:id="firstInfoTitleLabel" text="Position">
                                              <styleClass>
                                                 <String fx:value="regularText" />
                                                 <String fx:value="white" />
@@ -179,7 +180,7 @@
                                        <children>
                                           <VBox prefHeight="70.0" prefWidth="443.0">
                                              <children>
-                                                <Label fx:id="secondInfoContentTitle" text="1234">
+                                                <Label fx:id="secondInfoContentTitle" text="4800.00">
                                                    <styleClass>
                                                       <String fx:value="regularText" />
                                                       <String fx:value="medium" />
@@ -187,7 +188,7 @@
                                                       <String fx:value="green" />
                                                    </styleClass>
                                                 </Label>
-                                                <Label fx:id="secondinfoContentInfo" text="Platzhalter">
+                                                <Label fx:id="secondinfoContentInfo" text="Gehaltszahlung">
                                                    <styleClass>
                                                       <String fx:value="regularText" />
                                                       <String fx:value="small" />
@@ -208,7 +209,7 @@
                                           <Insets left="15.0" right="15.0" />
                                        </padding>
                                        <children>
-                                          <Label fx:id="secondInfoTitle" text="Platzhalter">
+                                          <Label fx:id="secondInfoTitle" text="Bezahlung">
                                              <styleClass>
                                                 <String fx:value="regularText" />
                                                 <String fx:value="white" />
@@ -240,7 +241,7 @@
                                        <children>
                                           <VBox prefHeight="70.0" prefWidth="443.0">
                                              <children>
-                                                <Label fx:id="thirdInfoContentTitle" text="1234">
+                                                <Label fx:id="thirdInfoContentTitle" text="Finanzen">
                                                    <styleClass>
                                                       <String fx:value="regularText" />
                                                       <String fx:value="medium" />
@@ -248,7 +249,7 @@
                                                       <String fx:value="lightBlue" />
                                                    </styleClass>
                                                 </Label>
-                                                <Label fx:id="thirdInfoContentInfo" text="Platzhalter">
+                                                <Label fx:id="thirdInfoContentInfo" text="FI-DE-BE">
                                                    <styleClass>
                                                       <String fx:value="regularText" />
                                                       <String fx:value="small" />
@@ -266,7 +267,7 @@
                                           <Insets left="15.0" right="15.0" />
                                        </padding>
                                        <children>
-                                          <Label fx:id="thirdInfoTitle" text="Platzhalter">
+                                          <Label fx:id="thirdInfoTitle" text="Abteilung">
                                              <styleClass>
                                                 <String fx:value="regularText" />
                                                 <String fx:value="white" />
@@ -298,7 +299,7 @@
                                        <children>
                                           <VBox prefHeight="70.0" prefWidth="443.0">
                                              <children>
-                                                <Label fx:id="fourthInfoContentTitle" text="1234">
+                                                <Label fx:id="fourthInfoContentTitle" text="27">
                                                    <styleClass>
                                                       <String fx:value="regularText" />
                                                       <String fx:value="medium" />
@@ -306,7 +307,7 @@
                                                       <String fx:value="red" />
                                                    </styleClass>
                                                 </Label>
-                                                <Label fx:id="fourthInfoContentInfo" text="Platzhalter">
+                                                <Label fx:id="fourthInfoContentInfo" text="Mitarbeiteranzahl">
                                                    <styleClass>
                                                       <String fx:value="regularText" />
                                                       <String fx:value="small" />
@@ -324,7 +325,7 @@
                                           <Insets left="15.0" right="15.0" />
                                        </padding>
                                        <children>
-                                          <Label fx:id="fourthInfoTitle" text="Platzhalter">
+                                          <Label fx:id="fourthInfoTitle" text="Mitarbeiterverwaltung">
                                              <styleClass>
                                                 <String fx:value="regularText" />
                                                 <String fx:value="white" />
@@ -356,7 +357,7 @@
                            <children>
                               <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <Label fx:id="firstDialogHeader" opacity="0.6" text="PLATZHALTER">
+                                    <Label fx:id="firstDialogHeader" opacity="0.6" text="DATENBLATT">
                                        <styleClass>
                                           <String fx:value="regularText" />
                                           <String fx:value="bold" />
@@ -367,6 +368,82 @@
                                        </VBox.margin>
                                     </Label>
                                     <Region prefHeight="2.0" prefWidth="200.0" styleClass="spacer" />
+                                    <Region prefHeight="10.0" prefWidth="200.0" />
+                                    <Label fx:id="nameTitle" opacity="0.6" text="Name, Vorname">
+                                       <styleClass>
+                                          <String fx:value="regularText" />
+                                          <String fx:value="bold" />
+                                          <String fx:value="small" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label fx:id="nameContent" text="Zwegat, Peter">
+                                       <styleClass>
+                                          <String fx:value="regularText" />
+                                          <String fx:value="small" />
+                                       </styleClass>
+                                    </Label>
+                                    <Region prefHeight="10.0" prefWidth="200.0" />
+                                    <Label opacity="0.6" text="Geburtsdatum">
+                                       <styleClass>
+                                          <String fx:value="regularText" />
+                                          <String fx:value="bold" />
+                                          <String fx:value="small" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label fx:id="geburtsdatumContent" text="1950-02-22">
+                                       <styleClass>
+                                          <String fx:value="regularText" />
+                                          <String fx:value="small" />
+                                       </styleClass>
+                                    </Label>
+                                    <Region prefHeight="10.0" prefWidth="200.0" />
+                                    <Label opacity="0.6" text="Position">
+                                       <styleClass>
+                                          <String fx:value="regularText" />
+                                          <String fx:value="bold" />
+                                          <String fx:value="small" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label fx:id="positionContent" text="Manager">
+                                       <styleClass>
+                                          <String fx:value="regularText" />
+                                          <String fx:value="small" />
+                                       </styleClass>
+                                    </Label>
+                                    <Region prefHeight="10.0" prefWidth="200.0" />
+                                    <Label opacity="0.6" text="Anschrift">
+                                       <styleClass>
+                                          <String fx:value="regularText" />
+                                          <String fx:value="bold" />
+                                          <String fx:value="small" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label fx:id="anschriftStrasse" text="Finanzstraße 5">
+                                       <styleClass>
+                                          <String fx:value="regularText" />
+                                          <String fx:value="small" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label fx:id="anschriftOrt" text="10115, Berlin">
+                                       <styleClass>
+                                          <String fx:value="regularText" />
+                                          <String fx:value="small" />
+                                       </styleClass>
+                                    </Label>
+                                    <Region prefHeight="10.0" prefWidth="200.0" />
+                                    <Label opacity="0.6" text="Mitarbeiter Kennziffer">
+                                       <styleClass>
+                                          <String fx:value="regularText" />
+                                          <String fx:value="bold" />
+                                          <String fx:value="small" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label fx:id="kennzifferContent" text="17">
+                                       <styleClass>
+                                          <String fx:value="regularText" />
+                                          <String fx:value="small" />
+                                       </styleClass>
+                                    </Label>
                                  </children>
                               </VBox>
                            </children>
@@ -385,7 +462,7 @@
                            <children>
                               <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <Label fx:id="secondDialogHeader" opacity="0.6" text="PLATZHALTER">
+                                    <Label fx:id="secondDialogHeader" opacity="0.6" text="BEZAHLUNGSDATEN">
                                        <styleClass>
                                           <String fx:value="regularText" />
                                           <String fx:value="bold" />
@@ -396,6 +473,62 @@
                                        </VBox.margin>
                                     </Label>
                                     <Region prefHeight="2.0" prefWidth="200.0" styleClass="spacer" />
+                                    <Region prefHeight="10.0" prefWidth="200.0" />
+                                    <Label opacity="0.6" text="Bezahlunsstufe">
+                                       <styleClass>
+                                          <String fx:value="regularText" />
+                                          <String fx:value="small" />
+                                          <String fx:value="bold" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label fx:id="bezahlungStufeContent" text="CIO">
+                                       <styleClass>
+                                          <String fx:value="regularText" />
+                                          <String fx:value="small" />
+                                       </styleClass>
+                                    </Label>
+                                    <Region prefHeight="10.0" prefWidth="200.0" />
+                                    <Label opacity="0.6" text="Betrag">
+                                       <styleClass>
+                                          <String fx:value="regularText" />
+                                          <String fx:value="small" />
+                                          <String fx:value="bold" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label fx:id="bezahlungBetragContent" text="4800.00">
+                                       <styleClass>
+                                          <String fx:value="regularText" />
+                                          <String fx:value="small" />
+                                       </styleClass>
+                                    </Label>
+                                    <Region prefHeight="10.0" prefWidth="200.0" />
+                                    <Label opacity="0.6" text="Bankleitzahl">
+                                       <styleClass>
+                                          <String fx:value="regularText" />
+                                          <String fx:value="small" />
+                                          <String fx:value="bold" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label fx:id="bankLeitZahlContent" text="47263123">
+                                       <styleClass>
+                                          <String fx:value="regularText" />
+                                          <String fx:value="small" />
+                                       </styleClass>
+                                    </Label>
+                                    <Region prefHeight="10.0" prefWidth="200.0" />
+                                    <Label opacity="0.6" text="Kontonummer">
+                                       <styleClass>
+                                          <String fx:value="regularText" />
+                                          <String fx:value="small" />
+                                          <String fx:value="bold" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label fx:id="kontoNummerContent" text="528530">
+                                       <styleClass>
+                                          <String fx:value="regularText" />
+                                          <String fx:value="small" />
+                                       </styleClass>
+                                    </Label>
                                  </children>
                               </VBox>
                            </children>
@@ -414,7 +547,7 @@
                            <children>
                               <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <Label fx:id="thirdDialogHeader" opacity="0.6" text="PLATZHALTER">
+                                    <Label fx:id="thirdDialogHeader" opacity="0.6" text="ABTEILUNGSDATEN">
                                        <styleClass>
                                           <String fx:value="regularText" />
                                           <String fx:value="bold" />
@@ -425,6 +558,48 @@
                                        </VBox.margin>
                                     </Label>
                                     <Region prefHeight="2.0" prefWidth="200.0" styleClass="spacer" />
+                                    <Region prefHeight="10.0" prefWidth="200.0" />
+                                    <Label opacity="0.6" text="Kennung">
+                                       <styleClass>
+                                          <String fx:value="regularText" />
+                                          <String fx:value="small" />
+                                          <String fx:value="bold" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label fx:id="kennungContent" text="FI-DE-BE">
+                                       <styleClass>
+                                          <String fx:value="regularText" />
+                                          <String fx:value="small" />
+                                       </styleClass>
+                                    </Label>
+                                    <Region prefHeight="10.0" prefWidth="200.0" />
+                                    <Label opacity="0.6" text="Funktion">
+                                       <styleClass>
+                                          <String fx:value="regularText" />
+                                          <String fx:value="small" />
+                                          <String fx:value="bold" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label fx:id="funktionContent" text="Finanzen">
+                                       <styleClass>
+                                          <String fx:value="regularText" />
+                                          <String fx:value="small" />
+                                       </styleClass>
+                                    </Label>
+                                    <Region prefHeight="10.0" prefWidth="200.0" />
+                                    <Label opacity="0.6" text="Manager">
+                                       <styleClass>
+                                          <String fx:value="regularText" />
+                                          <String fx:value="small" />
+                                          <String fx:value="bold" />
+                                       </styleClass>
+                                    </Label>
+                                    <Label fx:id="managerContent" text="Peter Zwegat">
+                                       <styleClass>
+                                          <String fx:value="regularText" />
+                                          <String fx:value="small" />
+                                       </styleClass>
+                                    </Label>
                                  </children>
                               </VBox>
                            </children>
@@ -443,7 +618,7 @@
                            <children>
                               <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                                  <children>
-                                    <Label fx:id="fourthDialogHeader" opacity="0.6" text="PLATZHALTER">
+                                    <Label fx:id="fourthDialogHeader" opacity="0.6" text="MITARBEITERVERWALTUNG">
                                        <styleClass>
                                           <String fx:value="regularText" />
                                           <String fx:value="bold" />
@@ -453,7 +628,11 @@
                                           <Insets bottom="15.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <Region prefHeight="2.0" prefWidth="200.0" styleClass="spacer" />
+                                    <Region prefHeight="2.0" prefWidth="200.0" styleClass="spacer">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" />
+                                       </VBox.margin></Region>
+                                    <JFXTreeTableView VBox.vgrow="ALWAYS" />
                                  </children>
                               </VBox>
                            </children>

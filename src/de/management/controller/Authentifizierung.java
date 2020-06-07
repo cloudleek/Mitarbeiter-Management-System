@@ -2,6 +2,7 @@ package de.management.controller;
 // JavaFX Imports
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,6 +29,10 @@ public class Authentifizierung implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        loginButton.disableProperty().bind(Bindings.createBooleanBinding(
+                () -> loginNameField.getText().isEmpty() || loginPasswordField.getText().isEmpty(),
+                loginNameField.textProperty(), loginPasswordField.textProperty()
+        ));
     }
 
     @FXML

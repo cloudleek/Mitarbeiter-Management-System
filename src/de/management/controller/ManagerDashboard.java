@@ -1,9 +1,15 @@
 package de.management.controller;
 
+import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import de.management.entity.Abteilung;
 import de.management.entity.Mitarbeiter;
 // JavaFX Imports
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -40,7 +46,7 @@ public class ManagerDashboard {
     @FXML private Label funktionContent;
     @FXML private Label managerContent;
     /* Mitarbeiter */
-    @FXML private JFXTreeTableView treeTableView;
+    @FXML private JFXTreeTableView<?> treeTableView;
 
     public void initialisiereDaten(Mitarbeiter mitarbeiter, Abteilung abteilung) {
         /* Sidebar */
@@ -73,5 +79,24 @@ public class ManagerDashboard {
         this.kennungContent.setText(abteilung.getKennung());
         this.funktionContent.setText(abteilung.getFunktion());
         this.managerContent.setText(mitarbeiter.getFormatiertName());
+        /* Mitarbeiter der Abteilung */
+        JFXTreeTableColumn<Person, Integer> mitarbeiterKennziffer = new JFXTreeTableColumn<>("#");
+    }
+
+    class Person extends RecursiveTreeObject<Person> {
+        IntegerProperty kennziffer;
+        StringProperty vorname;
+        StringProperty nachname;
+        StringProperty geburtsdatum;
+        StringProperty position;
+
+        public Person(int kennziffer, String vorname, String nachname, String geburtsdatum, String positon) {
+            this.kennziffer = new SimpleIntegerProperty(kennziffer);
+            this.vorname = new SimpleStringProperty(vorname);
+            this.nachname = new SimpleStringProperty(nachname);
+            this.geburtsdatum = new SimpleStringProperty(geburtsdatum);
+            this.position = new SimpleStringProperty(positon);
+
+        }
     }
 }

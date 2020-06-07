@@ -1,9 +1,7 @@
 package de.management.controller;
-
+// JavaFX Imports
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import de.management.database.DBZugriff;
-import de.management.entity.Mitarbeiter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +9,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+// Weitere Imports
+import de.management.database.DBZugriff;
+import de.management.entity.Mitarbeiter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -73,8 +73,9 @@ public class Authentifizierung implements Initializable {
             Parent parent = FXMLLoader.load(getClass().getResource(this.dashboard_pfad));
             Stage stage = new Stage();
             stage.setTitle("Dashboard");
-            stage.setScene(new Scene(parent));
+            stage.setScene(new Scene(parent, 1280, 720));
             stage.sizeToScene();
+            stage.centerOnScreen();
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

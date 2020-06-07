@@ -32,8 +32,7 @@ public class Anwendung extends Application {
     public void start(Stage primaryStage) throws Exception {
         // FXML Datei
         Parent root = FXMLLoader.load(this.loginFXML);
-        // Szene in HD-Aufloesung erstellen
-        scene = new Scene(root, 1280, 720);
+        scene = new Scene(root);
         stage = primaryStage;
         // Fensterattribute festlegen
         primaryStage.setScene(scene);

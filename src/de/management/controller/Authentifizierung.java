@@ -2,6 +2,7 @@ package de.management.controller;
 // JavaFX Imports
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import de.management.entity.Abteilung;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +21,7 @@ import java.util.ResourceBundle;
 public class Authentifizierung implements Initializable {
 
     private Mitarbeiter mitarbeiter;
+    private Abteilung abteilung;
     private String dashboard_pfad;
 
     @FXML
@@ -43,18 +45,20 @@ public class Authentifizierung implements Initializable {
         boolean validerBenutzername = DBZugriff.validiereBenutzerkennung(benutzername);
 
         if(validerBenutzername) {
-            // Passwort überprüfen
             boolean validesPasswort = DBZugriff.validiereAnmeldung(benutzername, passwort);
 
             if(validesPasswort) {
                 closeWindow();
                 loadMitarbeiter(benutzername, passwort);
+                loadAbteilung();
                 loadDashboardPfad();
                 loadDashboard();
             } else {
+                // TODO: 10/06/2020 Fehlermeldung einfügen
                 System.out.println("Fehlerhaftes Passwort!");
             }
         } else {
+            // TODO: 10/06/2020 Fehlermeldung einfügen
             System.out.println("Fehlerhafter Benutzername!");
         }
     }
@@ -68,6 +72,11 @@ public class Authentifizierung implements Initializable {
         this.mitarbeiter = DBZugriff.loadMitarbeiter(login_id);
     }
 
+    private void loadAbteilung() {
+        int abteilung_id = DBZugriff.loadAbteilungId(mitarbeiter.getMitarbeiter_id());
+        this.abteilung = DBZugriff.loadAbteilung(abteilung_id); // Fehler
+    }
+
     private void loadDashboardPfad() {
         String mitarbeiter_position = this.mitarbeiter.getPosition().toLowerCase();
         this.dashboard_pfad = "../view/views/" + mitarbeiter_position + "Dashboard.fxml";
@@ -75,8 +84,17 @@ public class Authentifizierung implements Initializable {
 
     private void loadDashboard() {
         try {
-            Parent parent = FXMLLoader.load(getClass().getResource(this.dashboard_pfad));
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            // URL des Dashboards festlegen
+            URL dashboard_url = getClass().getResource(this.dashboard_pfad);
+            fxmlLoader.setLocation(dashboard_url);
+            // Parent und Stage laden
+            Parent parent = fxmlLoader.load();
             Stage stage = new Stage();
+            // Dashboard initialisieren
+            ManagerDashboard managerDashboard = fxmlLoader.getController();
+            managerDashboard.initialisiereDaten(this.mitarbeiter, this.abteilung);
+            // Stage Informationen festlegen
             stage.setTitle("Dashboard");
             stage.setScene(new Scene(parent, 1280, 720));
             stage.sizeToScene();

@@ -51,49 +51,62 @@ public class ManagerDashboard {
     @FXML private JFXTreeTableView<?> treeTableView;
     private Mitarbeiter mitarbeiter;
 
-
+    // TODO: 10/06/2020 Alle Abteilungsinfos in die initializeAbteilung Methode auslagern 
     public void initialisiereDaten(Mitarbeiter mitarbeiter) {
-        /* Sidebar */
-        this.mitarbeiterName.setText(mitarbeiter.getFormatiertName());
-        this.mitarbeiterPosition.setText("Manager");
+        this.mitarbeiter = mitarbeiter;
+        this.loadAbteilung();
         /* Info Panel 01 */
         this.firstInfoContentTitle.setText("Manager");
-        this.firstInfoContentInfo.setText("Abteilung: " + abteilung.getKennung());
-        /* Info Panel 02 */
-        this.secondInfoContentTitle.setText(Double.toString(mitarbeiter.getBezahlung().getBetrag()));
-        /* Info Panel 03 */
-        this.thirdInfoContentTitle.setText(abteilung.getFunktion());
-        this.thirdInfoContentInfo.setText(abteilung.getKennung());
-        /* Info Panel 04 */
-        this.fourthInfoContentTitle.setText(Integer.toString(abteilung.getMitarbeiterList().size()));
-
-        /* Datenblatt */
-        this.nameContent.setText(mitarbeiter.getFormatiertName());
-        this.geburtsdatumContent.setText(mitarbeiter.getGeburtsDatum());
-        this.positionContent.setText("Manager");
-        this.anschriftStrasse.setText(mitarbeiter.getAdresse().getStrasse() + " " + mitarbeiter.getAdresse().getHausNr());
-        this.anschriftOrt.setText(mitarbeiter.getAdresse().getOrtFormatiert());
-        this.kennzifferContent.setText(Integer.toString(mitarbeiter.getMitarbeiter_id()));
-        /* Bezahlung */
-        this.bezahlungStufeContent.setText(mitarbeiter.getBezahlung().getStufe());
-        this.bezahlungBetragContent.setText(Double.toString(mitarbeiter.getBezahlung().getBetrag()));
-        this.bankLeitZahlContent.setText(mitarbeiter.getBankverbindung().getBankLeitZahl());
-        this.kontoNummerContent.setText(mitarbeiter.getBankverbindung().getKontoNummer());
+        // Info Karten mit Informationen fuellen
+        this.displaySidebar();
+        this.displayAbteilung();
+        this.displayDatenblatt();
+        this.displayBezahlung();
         /* Mitarbeiter der Abteilung */
         JFXTreeTableColumn<Person, Integer> mitarbeiterKennziffer = new JFXTreeTableColumn<>("#");
-    }
-
-    private void initializeAbteilung() {
-        this.loadAbteilung();
-
-        this.kennungContent.setText(this.abteilung.getKennung());
-        this.funktionContent.setText(this.abteilung.getFunktion());
-        this.managerContent.setText(this.mitarbeiter.getFormatiertName());
     }
 
     private void loadAbteilung() {
         int abteilung_id = DBZugriff.loadAbteilungId(this.mitarbeiter.getMitarbeiter_id());
         this.abteilung = DBZugriff.loadAbteilung(abteilung_id);
+    }
+
+    private void displaySidebar() {
+        this.mitarbeiterName.setText(mitarbeiter.getFormatiertName());
+        this.mitarbeiterPosition.setText("Manager");
+    }
+
+    private void displayAbteilung() {
+        /* Info Panel 01 */
+        this.firstInfoContentInfo.setText("Abteilung: " + abteilung.getKennung());
+        /* Info Panel 03 */
+        this.thirdInfoContentTitle.setText(abteilung.getFunktion());
+        this.thirdInfoContentInfo.setText(abteilung.getKennung());
+        /* Info Panel 04 */
+        this.fourthInfoContentTitle.setText(Integer.toString(this.abteilung.getMitarbeiterList().size()));
+        this.kennungContent.setText(this.abteilung.getKennung());
+        this.funktionContent.setText(this.abteilung.getFunktion());
+        this.managerContent.setText(this.mitarbeiter.getFormatiertName());
+    }
+
+    private void displayDatenblatt() {
+        /* Info Panel 01 */
+        this.nameContent.setText(this.mitarbeiter.getFormatiertName());
+        this.geburtsdatumContent.setText(this.mitarbeiter.getGeburtsDatum());
+        this.positionContent.setText("Manager");
+        this.anschriftStrasse.setText(this.mitarbeiter.getAdresse().getStrasse() + " " + mitarbeiter.getAdresse().getHausNr());
+        this.anschriftOrt.setText(this.mitarbeiter.getAdresse().getOrtFormatiert());
+        this.kennzifferContent.setText(Integer.toString(this.mitarbeiter.getMitarbeiter_id()));
+    }
+
+    private void displayBezahlung() {
+        /* Info Panel 02 */
+        this.secondInfoContentTitle.setText(Double.toString(mitarbeiter.getBezahlung().getBetrag()));
+
+        this.bezahlungStufeContent.setText(this.mitarbeiter.getBezahlung().getStufe());
+        this.bezahlungBetragContent.setText(Double.toString(this.mitarbeiter.getBezahlung().getBetrag()));
+        this.bankLeitZahlContent.setText(this.mitarbeiter.getBankverbindung().getBankLeitZahl());
+        this.kontoNummerContent.setText(this.mitarbeiter.getBankverbindung().getKontoNummer());
     }
 
     class Person extends RecursiveTreeObject<Person> {

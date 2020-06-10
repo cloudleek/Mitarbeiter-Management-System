@@ -21,7 +21,6 @@ import java.util.ResourceBundle;
 public class Authentifizierung implements Initializable {
 
     private Mitarbeiter mitarbeiter;
-    private Abteilung abteilung;
     private String dashboard_pfad;
 
     @FXML
@@ -50,7 +49,6 @@ public class Authentifizierung implements Initializable {
             if(validesPasswort) {
                 closeWindow();
                 loadMitarbeiter(benutzername, passwort);
-                loadAbteilung();
                 loadDashboardPfad();
                 loadDashboard();
             } else {
@@ -72,11 +70,6 @@ public class Authentifizierung implements Initializable {
         this.mitarbeiter = DBZugriff.loadMitarbeiter(login_id);
     }
 
-    private void loadAbteilung() {
-        int abteilung_id = DBZugriff.loadAbteilungId(mitarbeiter.getMitarbeiter_id());
-        this.abteilung = DBZugriff.loadAbteilung(abteilung_id); // Fehler
-    }
-
     private void loadDashboardPfad() {
         String mitarbeiter_position = this.mitarbeiter.getPosition().toLowerCase();
         this.dashboard_pfad = "../view/views/" + mitarbeiter_position + "Dashboard.fxml";
@@ -92,8 +85,17 @@ public class Authentifizierung implements Initializable {
             Parent parent = fxmlLoader.load();
             Stage stage = new Stage();
             // Dashboard initialisieren
-            ManagerDashboard managerDashboard = fxmlLoader.getController();
-            managerDashboard.initialisiereDaten(this.mitarbeiter, this.abteilung);
+            String mitarbeiter_position = this.mitarbeiter.getPosition();
+            if(mitarbeiter_position.equals("Mitarbeiter")) {
+                MitarbeiterDashboard mitarbeiterDashboard = fxmlLoader.getController();
+                mitarbeiterDashboard.initialisiereDaten(this.mitarbeiter);
+            } else if (mitarbeiter_position.equals("Manager")) {
+                ManagerDashboard managerDashboard = fxmlLoader.getController();
+                managerDashboard.initialisiereDaten(this.mitarbeiter);
+            } else {
+                AdminDashboard adminDashboard = fxmlLoader.getController();
+                adminDashboard.initialisiereDaten(this.mitarbeiter);
+            }
             // Stage Informationen festlegen
             stage.setTitle("Dashboard");
             stage.setScene(new Scene(parent, 1280, 720));

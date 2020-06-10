@@ -3,6 +3,7 @@ package de.management.controller;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import de.management.database.DBZugriff;
 import de.management.entity.Abteilung;
 import de.management.entity.Mitarbeiter;
 // JavaFX Imports
@@ -45,10 +46,13 @@ public class ManagerDashboard {
     @FXML private Label kennungContent;
     @FXML private Label funktionContent;
     @FXML private Label managerContent;
+    private Abteilung abteilung;
     /* Mitarbeiter */
     @FXML private JFXTreeTableView<?> treeTableView;
+    private Mitarbeiter mitarbeiter;
 
-    public void initialisiereDaten(Mitarbeiter mitarbeiter, Abteilung abteilung) {
+
+    public void initialisiereDaten(Mitarbeiter mitarbeiter) {
         /* Sidebar */
         this.mitarbeiterName.setText(mitarbeiter.getFormatiertName());
         this.mitarbeiterPosition.setText("Manager");
@@ -75,12 +79,21 @@ public class ManagerDashboard {
         this.bezahlungBetragContent.setText(Double.toString(mitarbeiter.getBezahlung().getBetrag()));
         this.bankLeitZahlContent.setText(mitarbeiter.getBankverbindung().getBankLeitZahl());
         this.kontoNummerContent.setText(mitarbeiter.getBankverbindung().getKontoNummer());
-        /* Abteilung */
-        this.kennungContent.setText(abteilung.getKennung());
-        this.funktionContent.setText(abteilung.getFunktion());
-        this.managerContent.setText(mitarbeiter.getFormatiertName());
         /* Mitarbeiter der Abteilung */
         JFXTreeTableColumn<Person, Integer> mitarbeiterKennziffer = new JFXTreeTableColumn<>("#");
+    }
+
+    private void initializeAbteilung() {
+        this.loadAbteilung();
+
+        this.kennungContent.setText(this.abteilung.getKennung());
+        this.funktionContent.setText(this.abteilung.getFunktion());
+        this.managerContent.setText(this.mitarbeiter.getFormatiertName());
+    }
+
+    private void loadAbteilung() {
+        int abteilung_id = DBZugriff.loadAbteilungId(this.mitarbeiter.getMitarbeiter_id());
+        this.abteilung = DBZugriff.loadAbteilung(abteilung_id);
     }
 
     class Person extends RecursiveTreeObject<Person> {
